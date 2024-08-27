@@ -1,0 +1,6 @@
+@WGDBWinmeierService_HostAddress = http://localhost:5262
+
+GET {{WGDBWinmeierService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
