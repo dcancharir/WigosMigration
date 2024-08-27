@@ -1,0 +1,6 @@
+@WGDBKeopsService_HostAddress = http://localhost:5190
+
+GET {{WGDBKeopsService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

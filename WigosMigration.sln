@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WGDBDatawareHouseClient", "WGDBDatawareHouseClient\WGDBDatawareHouseClient.csproj", "{0D2E8826-9475-496C-AF7D-E98A0086142F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WGDBDatawareHouseClient", "WGDBDatawareHouseClient\WGDBDatawareHouseClient.csproj", "{0D2E8826-9475-496C-AF7D-E98A0086142F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WGDBWinmeierService", "WGDBWinmeierService\WGDBWinmeierService.csproj", "{9F07186D-AFF3-495C-986E-7EFBC49FC186}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WGDBWinmeierService", "WGDBWinmeierService\WGDBWinmeierService.csproj", "{9F07186D-AFF3-495C-986E-7EFBC49FC186}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WGDBKeopsService", "WGDBKeopsService\WGDBKeopsService.csproj", "{22BE1D10-B1B2-4135-8349-63E177A82C66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9F07186D-AFF3-495C-986E-7EFBC49FC186}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F07186D-AFF3-495C-986E-7EFBC49FC186}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F07186D-AFF3-495C-986E-7EFBC49FC186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22BE1D10-B1B2-4135-8349-63E177A82C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22BE1D10-B1B2-4135-8349-63E177A82C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22BE1D10-B1B2-4135-8349-63E177A82C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22BE1D10-B1B2-4135-8349-63E177A82C66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
