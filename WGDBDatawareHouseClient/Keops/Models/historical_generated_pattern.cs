@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class historical_generated_pattern
 {
+    [Key]
     public long hgp_id { get; set; }
 
     public long hgp_al_id { get; set; }

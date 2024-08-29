@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class handpay
 {
+    [Key]
     public long hp_id { get; set; }
 
     public int? hp_terminal_id { get; set; }

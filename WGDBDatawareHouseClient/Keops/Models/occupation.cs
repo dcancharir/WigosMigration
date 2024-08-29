@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class occupation
 {
+    [Key]
     public int oc_id { get; set; }
 
     [StringLength(510)]

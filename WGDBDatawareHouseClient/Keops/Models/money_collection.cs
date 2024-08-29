@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class money_collection
 {
+    [Key]
     public long mc_collection_id { get; set; }
 
     [Column(TypeName = "datetime")]

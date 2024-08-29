@@ -1287,7 +1287,7 @@ public partial class wgdb_000Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("guest");
+        modelBuilder.HasDefaultSchema("dbo");
 
         modelBuilder.Entity<AFIP_DETALLE_TERMINALE>(entity =>
         {

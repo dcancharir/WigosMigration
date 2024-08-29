@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class terminal
 {
+    [Key]
     public int te_terminal_id { get; set; }
 
     public int te_type { get; set; }

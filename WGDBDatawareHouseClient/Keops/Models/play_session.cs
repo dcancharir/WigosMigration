@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class play_session
 {
+    [Key]
     public long ps_play_session_id { get; set; }
 
     public long? ps_account_id { get; set; }

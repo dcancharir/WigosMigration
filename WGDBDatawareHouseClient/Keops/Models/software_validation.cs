@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class software_validation
 {
+    [Key]
     public long sval_validation_id { get; set; }
 
     [Column(TypeName = "datetime")]

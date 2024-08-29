@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 [Table("sales_per_hour")]
 [Index("sph_timestamp", Name = "IX_SPH_TIMESTAMP")]
 [Index("sph_base_hour", Name = "IX_sph_base_hour")]
@@ -45,7 +45,7 @@ public partial class sales_per_hour
 
     [Column(TypeName = "money")]
     public decimal sph_theoretical_won_amount { get; set; }
-
+    [Key]
     public long sph_unique_id { get; set; }
 
     [Column(TypeName = "money")]

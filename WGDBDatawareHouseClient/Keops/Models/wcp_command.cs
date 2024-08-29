@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class wcp_command
 {
+    [Key]
     public long cmd_id { get; set; }
 
     public int cmd_terminal_id { get; set; }

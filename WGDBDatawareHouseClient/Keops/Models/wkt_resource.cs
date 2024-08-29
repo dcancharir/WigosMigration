@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class wkt_resource
 {
+    [Key]
     public long res_resource_id { get; set; }
 
     [StringLength(100)]

@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class mobile_bank
 {
+    [Key]
     public long mb_account_id { get; set; }
 
     public short mb_account_type { get; set; }

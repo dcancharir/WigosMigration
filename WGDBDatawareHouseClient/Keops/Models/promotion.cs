@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class promotion
 {
+    [Key]
     public long pm_promotion_id { get; set; }
 
     [StringLength(100)]

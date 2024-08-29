@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class cage_movement_detail
 {
+    [Key]
     public long cmd_cage_movement_detail_id { get; set; }
 
     public long cmd_movement_id { get; set; }

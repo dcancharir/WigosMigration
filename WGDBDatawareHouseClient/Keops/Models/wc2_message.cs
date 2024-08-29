@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class wc2_message
 {
+    [Key]
     public long w2m_message_id { get; set; }
 
     [Column(TypeName = "datetime")]

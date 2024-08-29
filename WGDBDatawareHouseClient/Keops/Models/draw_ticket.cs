@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WGDBDatawareHouseClient.Keops.Models;
 
-[Keyless]
+//[Keyless]
 public partial class draw_ticket
 {
+    [Key]
     public long dt_id { get; set; }
 
     [Column(TypeName = "datetime")]
