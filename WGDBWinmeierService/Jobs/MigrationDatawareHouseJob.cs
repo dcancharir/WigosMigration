@@ -118,8 +118,8 @@ public class MigrationDatawareHouseJob : IJob
                 int intentos = 100;
                 var startIndex = i * 10;
                 var data = lastCreated == null ?
-                    _context.account_documents.Skip(startIndex).Take(10).ToList() :
-                    _context.account_documents.Where(x => x.ad_created >= lastCreated).Skip(startIndex).Take(10).ToList();
+                    _context.account_documents.OrderBy(x => x.ad_created).Skip(startIndex).Take(10).ToList() :
+                    _context.account_documents.Where(x => x.ad_created >= lastCreated).OrderBy(x=>x.ad_created).Skip(startIndex).Take(10).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -153,7 +153,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.account_movements.Where(x => x.am_movement_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.account_movements.Where(x => x.am_movement_id >= lastId).OrderBy(x=>x.am_movement_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -187,7 +187,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.account_operations.Where(x => x.ao_operation_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.account_operations.Where(x => x.ao_operation_id >= lastId).OrderBy(x => x.ao_operation_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -221,7 +221,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.account_promotions.Where(x => x.acp_unique_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.account_promotions.Where(x => x.acp_unique_id >= lastId).OrderBy(x => x.acp_unique_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -256,8 +256,8 @@ public class MigrationDatawareHouseJob : IJob
                 int intentos = 100;
                 var startIndex = i * batchSize;
                 var data = lastCreated == null ?
-                    _context.accounts.Skip(startIndex).Take(batchSize).ToList() :
-                    _context.accounts.Where(x => x.ac_created >= lastCreated).Skip(startIndex).Take(batchSize).ToList();
+                    _context.accounts.OrderBy(x => x.ac_created).Skip(startIndex).Take(batchSize).ToList() :
+                    _context.accounts.Where(x => x.ac_created >= lastCreated).OrderBy(x => x.ac_created).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -326,7 +326,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.alarms.Where(x => x.al_alarm_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.alarms.Where(x => x.al_alarm_id >= lastId).OrderBy(x => x.al_alarm_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -361,8 +361,8 @@ public class MigrationDatawareHouseJob : IJob
                 int intentos = 100;
                 var startIndex = i * batchSize;
                 var data = lastCreated == null ?
-                    _context.aml_dailies.Skip(startIndex).Take(batchSize).ToList() :
-                    _context.aml_dailies.Where(x => x.amd_day >= lastCreated).Skip(startIndex).Take(batchSize).ToList();
+                    _context.aml_dailies.OrderBy(x => x.amd_day).Skip(startIndex).Take(batchSize).ToList() :
+                    _context.aml_dailies.Where(x => x.amd_day >= lastCreated).OrderBy(x=>x.amd_day).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -397,8 +397,8 @@ public class MigrationDatawareHouseJob : IJob
                 int intentos = 100;
                 var startIndex = i * batchSize;
                 var data = lastCreated == null ?
-                    _context.aml_monthlies.Skip(startIndex).Take(batchSize).ToList() :
-                    _context.aml_monthlies.Where(x => x.amm_month >= lastCreated).Skip(startIndex).Take(batchSize).ToList();
+                    _context.aml_monthlies.OrderBy(x => x.amm_month).Skip(startIndex).Take(batchSize).ToList() :
+                    _context.aml_monthlies.Where(x => x.amm_month >= lastCreated).OrderBy(x => x.amm_month).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -432,7 +432,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.areas.Where(x => x.ar_area_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.areas.Where(x => x.ar_area_id >= lastId).OrderBy(x => x.ar_area_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -466,7 +466,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.banks.Where(x => x.bk_bank_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.banks.Where(x => x.bk_bank_id >= lastId).OrderBy(x => x.bk_bank_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -500,7 +500,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.bonuses.Where(x => x.bns_bonus_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.bonuses.Where(x => x.bns_bonus_id >= lastId).OrderBy(x=>x.bns_bonus_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -569,7 +569,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.cage_concept_movement_details.Where(x => x.ccmd_cage_concept_movement_detail_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.cage_concept_movement_details.Where(x => x.ccmd_cage_concept_movement_detail_id >= lastId).OrderBy(x=>x.ccmd_cage_concept_movement_detail_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -603,7 +603,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.cage_movement_details.Where(x => x.cmd_cage_movement_detail_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.cage_movement_details.Where(x => x.cmd_cage_movement_detail_id >= lastId).OrderBy(x=>x.cmd_cage_movement_detail_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -637,7 +637,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.cage_movements.Where(x => x.cgm_movement_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.cage_movements.Where(x => x.cgm_movement_id >= lastId).OrderBy(x=>x.cgm_movement_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -706,7 +706,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.cashier_movements.Where(x => x.cm_movement_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.cashier_movements.Where(x => x.cm_movement_id >= lastId).OrderBy(x => x.cm_movement_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -740,7 +740,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.cashier_movements_grouped_by_hours.Where(x => x.cm_unique_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.cashier_movements_grouped_by_hours.Where(x => x.cm_unique_id >= lastId).OrderBy(x => x.cm_unique_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -774,7 +774,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.cashier_sessions.Where(x => x.cs_session_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.cashier_sessions.Where(x => x.cs_session_id >= lastId).OrderBy(x => x.cs_session_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -843,7 +843,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.cashier_vouchers.Where(x => x.cv_voucher_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.cashier_vouchers.Where(x => x.cv_voucher_id >= lastId).OrderBy(x => x.cv_voucher_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -912,7 +912,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.customer_record_details.Where(x => x.curd_detail_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.customer_record_details.Where(x => x.curd_detail_id >= lastId).OrderBy(x => x.curd_detail_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -946,7 +946,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.customer_record_details_histories.Where(x => x.curdh_detail_history_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.customer_record_details_histories.Where(x => x.curdh_detail_history_id >= lastId).OrderBy(x => x.curdh_detail_history_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -980,7 +980,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.customer_records.Where(x => x.cur_record_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.customer_records.Where(x => x.cur_record_id >= lastId).OrderBy(x => x.cur_record_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1014,7 +1014,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.customer_records_histories.Where(x => x.curh_record_history_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.customer_records_histories.Where(x => x.curh_record_history_id >= lastId).OrderBy(x => x.curh_record_history_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1084,8 +1084,8 @@ public class MigrationDatawareHouseJob : IJob
                 int intentos = 100;
                 var startIndex = i * batchSize;
                 var data = lastCreated == null ?
-                    _context.daily_meters.Skip(startIndex).Take(batchSize).ToList() :
-                    _context.daily_meters.Where(x => x.Date >= lastCreated).Skip(startIndex).Take(batchSize).ToList();
+                    _context.daily_meters.OrderBy(x => x.Date).Skip(startIndex).Take(batchSize).ToList() :
+                    _context.daily_meters.Where(x => x.Date >= lastCreated).OrderBy(x => x.Date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1119,7 +1119,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.draw_tickets.Where(x => x.dt_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.draw_tickets.Where(x => x.dt_id >= lastId).OrderBy(x => x.dt_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1153,7 +1153,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.draws.Where(x => x.dr_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.draws.Where(x => x.dr_id >= lastId).OrderBy(x => x.dr_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1187,7 +1187,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.event_histories.Where(x => x.eh_event_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.event_histories.Where(x => x.eh_event_id >= lastId).OrderBy(x => x.eh_event_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1326,7 +1326,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.gift_instances.Where(x => x.gin_gift_instance_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.gift_instances.Where(x => x.gin_gift_instance_id >= lastId).OrderBy(x => x.gin_gift_instance_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1361,8 +1361,8 @@ public class MigrationDatawareHouseJob : IJob
                 int intentos = 100;
                 var startIndex = i * batchSize;
                 var data = lastCreated == null ?
-                    _context.gui_audits.Skip(startIndex).Take(batchSize).ToList() :
-                    _context.gui_audits.Where(x => x.ga_datetime >= lastCreated).Skip(startIndex).Take(batchSize).ToList();
+                    _context.gui_audits.OrderBy(x => x.ga_datetime).Skip(startIndex).Take(batchSize).ToList() :
+                    _context.gui_audits.Where(x => x.ga_datetime >= lastCreated).OrderBy(x => x.ga_datetime).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1816,7 +1816,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.handpays.Where(x => x.hp_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.handpays.Where(x => x.hp_id >= lastId).OrderBy(x => x.hp_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1850,7 +1850,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.historical_generated_patterns.Where(x => x.hgp_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.historical_generated_patterns.Where(x => x.hgp_id >= lastId).OrderBy(x => x.hgp_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1884,7 +1884,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.invalid_play_sessions_to_player_trackings.Where(x => x.ips_unique_ud >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.invalid_play_sessions_to_player_trackings.Where(x => x.ips_unique_ud >= lastId).OrderBy(x => x.ips_unique_ud).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1918,7 +1918,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.mailing_instances.Where(x => x.mi_mailing_instance_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.mailing_instances.Where(x => x.mi_mailing_instance_id >= lastId).OrderBy(x => x.mi_mailing_instance_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1952,7 +1952,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.mb_movements.Where(x => x.mbm_movement_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.mb_movements.Where(x => x.mbm_movement_id >= lastId).OrderBy(x => x.mbm_movement_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1986,7 +1986,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.mobile_banks.Where(x => x.mb_account_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.mobile_banks.Where(x => x.mb_account_id >= lastId).OrderBy(x => x.mb_account_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2055,7 +2055,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.money_collections.Where(x => x.mc_collection_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.money_collections.Where(x => x.mc_collection_id >= lastId).OrderBy(x => x.mc_collection_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2089,7 +2089,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.occupations.Where(x => x.oc_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.occupations.Where(x => x.oc_id >= lastId).OrderBy(x => x.oc_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2123,7 +2123,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.play_sessions.Where(x => x.ps_play_session_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.play_sessions.Where(x => x.ps_play_session_id >= lastId).OrderBy(x => x.ps_play_session_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2157,7 +2157,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.plays.Where(x => x.pl_play_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.plays.Where(x => x.pl_play_id >= lastId).OrderBy(x => x.pl_play_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2191,7 +2191,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.promotions.Where(x => x.pm_promotion_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.promotions.Where(x => x.pm_promotion_id >= lastId).OrderBy(x => x.pm_promotion_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2225,7 +2225,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.providers_games.Where(x => x.pg_game_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.providers_games.Where(x => x.pg_game_id >= lastId).OrderBy(x => x.pg_game_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2259,7 +2259,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.sales_per_hours.Where(x => x.sph_unique_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.sales_per_hours.Where(x => x.sph_unique_id >= lastId).OrderBy(x => x.sph_unique_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2293,7 +2293,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.sas_meters_adjustments.Where(x => x.tma_unique_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.sas_meters_adjustments.Where(x => x.tma_unique_id >= lastId).OrderBy(x => x.tma_unique_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2327,7 +2327,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.software_validations.Where(x => x.sval_validation_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.software_validations.Where(x => x.sval_validation_id >= lastId).OrderBy(x => x.sval_validation_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2362,8 +2362,8 @@ public class MigrationDatawareHouseJob : IJob
                 int intentos = 100;
                 var startIndex = i * batchSize;
                 var data = lastCreated == null ?
-                    _context.terminal_game_translations.Skip(startIndex).Take(batchSize).ToList() :
-                    _context.terminal_game_translations.Where(x => x.tgt_created >= lastCreated).Skip(startIndex).Take(batchSize).ToList();
+                    _context.terminal_game_translations.OrderBy(x => x.tgt_created).Skip(startIndex).Take(batchSize).ToList() :
+                    _context.terminal_game_translations.Where(x => x.tgt_created >= lastCreated).OrderBy(x => x.tgt_created).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2503,8 +2503,8 @@ public class MigrationDatawareHouseJob : IJob
                 int intentos = 100;
                 var startIndex = i * batchSize;
                 var data = lastCreated == null ?
-                    _context.terminal_sas_meters_histories.Skip(startIndex).Take(batchSize).ToList() :
-                    _context.terminal_sas_meters_histories.Where(x => x.tsmh_created_datetime >= lastCreated).Skip(startIndex).Take(batchSize).ToList();
+                    _context.terminal_sas_meters_histories.OrderBy(x => x.tsmh_created_datetime).Skip(startIndex).Take(batchSize).ToList() :
+                    _context.terminal_sas_meters_histories.Where(x => x.tsmh_created_datetime >= lastCreated).OrderBy(x => x.tsmh_created_datetime).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2538,7 +2538,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.terminals.Where(x => x.te_terminal_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.terminals.Where(x => x.te_terminal_id >= lastId).OrderBy(x => x.te_terminal_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2573,8 +2573,8 @@ public class MigrationDatawareHouseJob : IJob
                 int intentos = 100;
                 var startIndex = i * batchSize;
                 var data = lastCreated == null ?
-                    _context.terminals_connecteds.Skip(startIndex).Take(batchSize).ToList() :
-                    _context.terminals_connecteds.Where(x => x.tc_date >= lastCreated).Skip(startIndex).Take(batchSize).ToList();
+                    _context.terminals_connecteds.OrderBy(x => x.tc_date).Skip(startIndex).Take(batchSize).ToList() :
+                    _context.terminals_connecteds.Where(x => x.tc_date >= lastCreated).OrderBy(x => x.tc_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2608,7 +2608,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.tickets_audit_status_changes.Where(x => x.tia_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.tickets_audit_status_changes.Where(x => x.tia_id >= lastId).OrderBy(x => x.tia_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2642,7 +2642,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.wc2_messages.Where(x => x.w2m_message_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.wc2_messages.Where(x => x.w2m_message_id >= lastId).OrderBy(x => x.w2m_message_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2676,7 +2676,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.wc2_sessions.Where(x => x.w2s_session_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.wc2_sessions.Where(x => x.w2s_session_id >= lastId).OrderBy(x => x.w2s_terminal_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2710,7 +2710,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.wcp_commands.Where(x => x.cmd_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.wcp_commands.Where(x => x.cmd_id >= lastId).OrderBy(x => x.cmd_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2738,13 +2738,13 @@ public class MigrationDatawareHouseJob : IJob
             string uri = $"{urlDataWareHouse}api/winmeiermigration/wkt_resources_save";
             var lastId = GetLastId($"{urlDataWareHouse}api/winmeiermigration/wkt_resources");
             var totalForMigration = _context.wkt_resources.Where(x => x.res_resource_id >= lastId).Count();
-            var batchCount = (totalForMigration + batchSize - 1) / batchSize;
+            var batchCount = (totalForMigration + 10 - 1) / 10;
             _logger.LogInformation($"wkt_resources_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
-                var startIndex = i * batchSize;
-                var data = _context.wkt_resources.Where(x => x.res_resource_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var startIndex = i * 10;
+                var data = _context.wkt_resources.Where(x => x.res_resource_id >= lastId).OrderBy(x => x.res_resource_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -2778,7 +2778,7 @@ public class MigrationDatawareHouseJob : IJob
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.wxp_001_messages.Where(x => x.wxm_id >= lastId).Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.wxp_001_messages.Where(x => x.wxm_id >= lastId).OrderBy(x => x.wxm_id).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
