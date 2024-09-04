@@ -24,6 +24,7 @@ public class MigrationDatawareHouseJob : IJob
     public Task Execute(IJobExecutionContext context)
     {
         //Inicio Jobs
+        _logger.LogInformation("El job se inicio " + DateTime.Now);
         account_documents_migration();
         account_movements_migration();
         account_operations_migration();

@@ -3,9 +3,29 @@ using Quartz;
 using Serilog;
 using WGDBWinmeierService.Jobs;
 using WGDBWinmeierService.Context;
+using Microsoft.Extensions.Hosting.WindowsServices;
+using Microsoft.Extensions.Logging.EventLog;
+
+var options = new WebApplicationOptions
+{
+    Args = args,
+    ContentRootPath = WindowsServiceHelpers.IsWindowsService() ? AppContext.BaseDirectory : default
+};
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseWindowsService();
+builder.Services.Configure<EventLogSettings>(config =>
+{
+    config.LogName = string.Empty;
+    config.SourceName = "WinmeierService";
+
+
+});
 var cronjobMigracionDataWarehouse = builder.Configuration.GetValue<string>("Crons:HoraMigracionDatawareHouse");
+var baseUri = builder.Configuration.GetValue<string>("Variables:BaseUri");
+
+builder.WebHost.UseUrls($"{baseUri}");
+
 // Add services to the container.
 
 builder.Services.AddControllers();
