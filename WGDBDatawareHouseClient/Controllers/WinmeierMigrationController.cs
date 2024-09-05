@@ -1450,16 +1450,28 @@ public class WinmeierMigrationController : ControllerBase
     [Route("h_m2d_smh")]
     public IActionResult h_m2d_smh()
     {
-        int total;
+        long lastId = 0;
         try
         {
-            total = _context.h_m2d_smhs.Count();
-            return Ok(total);
+            var lastElement = _context.h_m2d_smhs.OrderByDescending(x => x.x2d_date).FirstOrDefault();
+            lastId = lastElement == null ? 0 : lastElement.x2d_date;
 
         } catch(Exception)
         {
-            return Ok(0);
+            lastId = 0;
         }
+
+        return Ok(lastId);
+        //int total;
+        //try
+        //{
+        //    total = _context.h_m2d_smhs.Count();
+        //    return Ok(total);
+
+        //} catch(Exception)
+        //{
+        //    return Ok(0);
+        //}
 
     }
     [HttpPost]
@@ -1491,16 +1503,28 @@ public class WinmeierMigrationController : ControllerBase
     [Route("h_m2d_tmh")]
     public IActionResult h_m2d_tmh()
     {
-        int total;
+        long lastId = 0;
         try
         {
-            total = _context.h_m2d_tmhs.Count();
-            return Ok(total);
+            var lastElement = _context.h_m2d_tmhs.OrderByDescending(x => x.x2d_date).FirstOrDefault();
+            lastId = lastElement == null ? 0 : lastElement.x2d_date;
 
         } catch(Exception)
         {
-            return Ok(0);
+            lastId = 0;
         }
+
+        return Ok(lastId);
+        //int total;
+        //try
+        //{
+        //    total = _context.h_m2d_tmhs.Count();
+        //    return Ok(total);
+
+        //} catch(Exception)
+        //{
+        //    return Ok(0);
+        //}
 
     }
     [HttpPost]
@@ -1532,16 +1556,28 @@ public class WinmeierMigrationController : ControllerBase
     [Route("h_pvh")]
     public IActionResult h_pvh()
     {
-        int total;
+        long lastId = 0;
         try
         {
-            total = _context.h_pvhs.Count();
-            return Ok(total);
+            var lastElement = _context.h_pvhs.OrderByDescending(x => x.pvh_date).FirstOrDefault();
+            lastId = lastElement == null ? 0 : lastElement.pvh_date;
 
         } catch(Exception)
         {
-            return Ok(0);
+            lastId = 0;
         }
+
+        return Ok(lastId);
+        //int total;
+        //try
+        //{
+        //    total = _context.h_pvhs.Count();
+        //    return Ok(total);
+
+        //} catch(Exception)
+        //{
+        //    return Ok(0);
+        //}
 
     }
     [HttpPost]
@@ -1570,16 +1606,28 @@ public class WinmeierMigrationController : ControllerBase
     [Route("h_t2d_smh")]
     public IActionResult h_t2d_smh()
     {
-        int total;
+        long lastId = 0;
         try
         {
-            total = _context.h_t2d_smhs.Count();
-            return Ok(total);
+            var lastElement = _context.h_t2d_smhs.OrderByDescending(x => x.x2d_date).FirstOrDefault();
+            lastId = lastElement == null ? 0 : lastElement.x2d_date;
 
         } catch(Exception)
         {
-            return Ok(0);
+            lastId = 0;
         }
+
+        return Ok(lastId);
+        //int total;
+        //try
+        //{
+        //    total = _context.h_t2d_smhs.Count();
+        //    return Ok(total);
+
+        //} catch(Exception)
+        //{
+        //    return Ok(0);
+        //}
 
     }
     [HttpPost]
@@ -1611,16 +1659,28 @@ public class WinmeierMigrationController : ControllerBase
     [Route("h_t2d_tmh")]
     public IActionResult h_t2d_tmh()
     {
-        int total;
+        long lastId = 0;
         try
         {
-            total = _context.h_t2d_tmhs.Count();
-            return Ok(total);
+            var lastElement = _context.h_t2d_tmhs.OrderByDescending(x => x.x2d_date).FirstOrDefault();
+            lastId = lastElement == null ? 0 : lastElement.x2d_date;
 
         } catch(Exception)
         {
-            return Ok(0);
+            lastId = 0;
         }
+
+        return Ok(lastId);
+        //int total;
+        //try
+        //{
+        //    total = _context.h_t2d_tmhs.Count();
+        //    return Ok(total);
+
+        //} catch(Exception)
+        //{
+        //    return Ok(0);
+        //}
 
     }
     [HttpPost]
@@ -1652,16 +1712,28 @@ public class WinmeierMigrationController : ControllerBase
     [Route("h_w2d_smh")]
     public IActionResult h_w2d_smh()
     {
-        int total;
+        long lastId = 0;
         try
         {
-            total = _context.h_w2d_smhs.Count();
-            return Ok(total);
+            var lastElement = _context.h_w2d_smhs.OrderByDescending(x => x.x2d_date).FirstOrDefault();
+            lastId = lastElement == null ? 0 : lastElement.x2d_date;
 
         } catch(Exception)
         {
-            return Ok(0);
+            lastId = 0;
         }
+
+        return Ok(lastId);
+        //int total;
+        //try
+        //{
+        //    total = _context.h_w2d_smhs.Count();
+        //    return Ok(total);
+
+        //} catch(Exception)
+        //{
+        //    return Ok(0);
+        //}
 
     }
     [HttpPost]
@@ -1693,16 +1765,29 @@ public class WinmeierMigrationController : ControllerBase
     [Route("h_w2d_tmh")]
     public IActionResult h_w2d_tmh()
     {
-        int total;
+        long lastId = 0;
         try
         {
-            total = _context.h_w2d_tmhs.Count();
-            return Ok(total);
+            var lastElement = _context.h_w2d_tmhs.OrderByDescending(x => x.x2d_date).FirstOrDefault();
+            lastId = lastElement == null ? 0 : lastElement.x2d_date;
 
         } catch(Exception)
         {
-            return Ok(0);
+            lastId = 0;
         }
+
+        return Ok(lastId);
+
+        //int total;
+        //try
+        //{
+        //    total = _context.h_w2d_tmhs.Count();
+        //    return Ok(total);
+
+        //} catch(Exception)
+        //{
+        //    return Ok(0);
+        //}
 
     }
     [HttpPost]
@@ -1734,16 +1819,27 @@ public class WinmeierMigrationController : ControllerBase
     [Route("h_x2d_control")]
     public IActionResult h_x2d_control()
     {
-        int total;
+        DateTime? last_created;
         try
         {
-            total = _context.h_x2d_controls.Count();
-            return Ok(total);
+            var lastElement = _context.h_x2d_controls.OrderByDescending(x => x.x2d_date).FirstOrDefault();
+            last_created = lastElement?.x2d_date;
+            return Ok(last_created);
 
         } catch(Exception)
         {
-            return Ok(0);
+            return Ok(null);
         }
+        //int total;
+        //try
+        //{
+        //    total = _context.h_x2d_controls.Count();
+        //    return Ok(total);
+
+        //} catch(Exception)
+        //{
+        //    return Ok(0);
+        //}
 
     }
     [HttpPost]
@@ -1772,16 +1868,28 @@ public class WinmeierMigrationController : ControllerBase
     [Route("h_y2d_smh")]
     public IActionResult h_y2d_smh()
     {
-        int total;
+        long lastId = 0;
         try
         {
-            total = _context.h_y2d_smhs.Count();
-            return Ok(total);
+            var lastElement = _context.h_y2d_smhs.OrderByDescending(x => x.x2d_date).FirstOrDefault();
+            lastId = lastElement == null ? 0 : lastElement.x2d_date;
 
         } catch(Exception)
         {
-            return Ok(0);
+            lastId = 0;
         }
+
+        return Ok(lastId);
+        //int total;
+        //try
+        //{
+        //    total = _context.h_y2d_smhs.Count();
+        //    return Ok(total);
+
+        //} catch(Exception)
+        //{
+        //    return Ok(0);
+        //}
 
     }
     [HttpPost]
@@ -1813,16 +1921,28 @@ public class WinmeierMigrationController : ControllerBase
     [Route("h_y2d_tmh")]
     public IActionResult h_y2d_tmh()
     {
-        int total;
+        long lastId = 0;
         try
         {
-            total = _context.h_y2d_tmhs.Count();
-            return Ok(total);
+            var lastElement = _context.h_y2d_tmhs.OrderByDescending(x => x.x2d_date).FirstOrDefault();
+            lastId = lastElement == null ? 0 : lastElement.x2d_date;
 
         } catch(Exception)
         {
-            return Ok(0);
+            lastId = 0;
         }
+
+        return Ok(lastId);
+        //int total;
+        //try
+        //{
+        //    total = _context.h_y2d_tmhs.Count();
+        //    return Ok(total);
+
+        //} catch(Exception)
+        //{
+        //    return Ok(0);
+        //}
 
     }
     [HttpPost]

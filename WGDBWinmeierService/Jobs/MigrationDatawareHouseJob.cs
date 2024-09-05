@@ -1459,16 +1459,15 @@ public class MigrationDatawareHouseJob : IJob
         try
         {
             string uri = $"{urlDataWareHouse}api/winmeiermigration/h_m2d_smh_save";
-            var total = GetTotal($"{urlDataWareHouse}api/winmeiermigration/h_m2d_smh");
-            var totalLocal = _context.h_m2d_smhs.Count();
-            int totalForMigration = total == totalLocal ? 0 : totalLocal;
+            var lastId = GetLastId($"{urlDataWareHouse}api/winmeiermigration/h_m2d_smh");
+            var totalForMigration = _context.h_m2d_smhs.Where(x => x.x2d_date >= lastId).Count();
             var batchCount = (totalForMigration + batchSize - 1) / batchSize;
             _logger.LogInformation($"h_m2d_smh_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.h_m2d_smhs.Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.h_m2d_smhs.Where(x => x.x2d_date >= lastId).OrderBy(x => x.x2d_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1494,16 +1493,15 @@ public class MigrationDatawareHouseJob : IJob
         try
         {
             string uri = $"{urlDataWareHouse}api/winmeiermigration/h_m2d_tmh_save";
-            var total = GetTotal($"{urlDataWareHouse}api/winmeiermigration/h_m2d_tmh");
-            var totalLocal = _context.h_m2d_tmhs.Count();
-            int totalForMigration = total == totalLocal ? 0 : totalLocal;
+            var lastId = GetLastId($"{urlDataWareHouse}api/winmeiermigration/h_m2d_tmh");
+            var totalForMigration = _context.h_m2d_tmhs.Where(x => x.x2d_date >= lastId).Count();
             var batchCount = (totalForMigration + batchSize - 1) / batchSize;
             _logger.LogInformation($"h_m2d_tmh_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.h_m2d_tmhs.Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.h_m2d_tmhs.Where(x => x.x2d_date >= lastId).OrderBy(x => x.x2d_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1529,16 +1527,15 @@ public class MigrationDatawareHouseJob : IJob
         try
         {
             string uri = $"{urlDataWareHouse}api/winmeiermigration/h_pvh_save";
-            var total = GetTotal($"{urlDataWareHouse}api/winmeiermigration/h_pvh");
-            var totalLocal = _context.h_pvhs.Count();
-            int totalForMigration = total == totalLocal ? 0 : totalLocal;
+            var lastId = GetLastId($"{urlDataWareHouse}api/winmeiermigration/h_pvh");
+            var totalForMigration = _context.h_pvhs.Where(x => x.pvh_date >= lastId).Count();
             var batchCount = (totalForMigration + batchSize - 1) / batchSize;
             _logger.LogInformation($"h_pvh_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.h_pvhs.Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.h_pvhs.Where(x => x.pvh_date >= lastId).OrderBy(x => x.pvh_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1564,16 +1561,15 @@ public class MigrationDatawareHouseJob : IJob
         try
         {
             string uri = $"{urlDataWareHouse}api/winmeiermigration/h_t2d_smh_save";
-            var total = GetTotal($"{urlDataWareHouse}api/winmeiermigration/h_t2d_smh");
-            var totalLocal = _context.h_t2d_smhs.Count();
-            int totalForMigration = total == totalLocal ? 0 : totalLocal;
+            var lastId = GetLastId($"{urlDataWareHouse}api/winmeiermigration/h_t2d_smh");
+            var totalForMigration = _context.h_t2d_smhs.Where(x => x.x2d_date >= lastId).Count();
             var batchCount = (totalForMigration + batchSize - 1) / batchSize;
             _logger.LogInformation($"h_t2d_smh_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.h_t2d_smhs.Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.h_t2d_smhs.Where(x => x.x2d_date >= lastId).OrderBy(x => x.x2d_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1599,16 +1595,15 @@ public class MigrationDatawareHouseJob : IJob
         try
         {
             string uri = $"{urlDataWareHouse}api/winmeiermigration/h_t2d_tmh_save";
-            var total = GetTotal($"{urlDataWareHouse}api/winmeiermigration/h_t2d_tmh");
-            var totalLocal = _context.h_t2d_tmhs.Count();
-            int totalForMigration = total == totalLocal ? 0 : totalLocal;
+            var lastId = GetLastId($"{urlDataWareHouse}api/winmeiermigration/h_t2d_tmh");
+            var totalForMigration = _context.h_t2d_tmhs.Where(x => x.x2d_date >= lastId).Count();
             var batchCount = (totalForMigration + batchSize - 1) / batchSize;
             _logger.LogInformation($"h_t2d_tmh_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.h_t2d_tmhs.Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.h_t2d_tmhs.Where(x => x.x2d_date >= lastId).OrderBy(x => x.x2d_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1634,16 +1629,15 @@ public class MigrationDatawareHouseJob : IJob
         try
         {
             string uri = $"{urlDataWareHouse}api/winmeiermigration/h_w2d_smh_save";
-            var total = GetTotal($"{urlDataWareHouse}api/winmeiermigration/h_w2d_smh");
-            var totalLocal = _context.h_w2d_smhs.Count();
-            int totalForMigration = total == totalLocal ? 0 : totalLocal;
+            var lastId = GetLastId($"{urlDataWareHouse}api/winmeiermigration/h_w2d_smh");
+            var totalForMigration = _context.h_w2d_smhs.Where(x => x.x2d_date >= lastId).Count();
             var batchCount = (totalForMigration + batchSize - 1) / batchSize;
             _logger.LogInformation($"h_w2d_smh_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.h_w2d_smhs.Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.h_w2d_smhs.Where(x => x.x2d_date >= lastId).OrderBy(x => x.x2d_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1669,16 +1663,15 @@ public class MigrationDatawareHouseJob : IJob
         try
         {
             string uri = $"{urlDataWareHouse}api/winmeiermigration/h_w2d_tmh_save";
-            var total = GetTotal($"{urlDataWareHouse}api/winmeiermigration/h_w2d_tmh");
-            var totalLocal = _context.h_w2d_tmhs.Count();
-            int totalForMigration = total == totalLocal ? 0 : totalLocal;
+            var lastId = GetLastId($"{urlDataWareHouse}api/winmeiermigration/h_w2d_tmh");
+            var totalForMigration = _context.h_w2d_tmhs.Where(x => x.x2d_date >= lastId).Count();
             var batchCount = (totalForMigration + batchSize - 1) / batchSize;
             _logger.LogInformation($"h_w2d_tmh_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.h_w2d_tmhs.Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.h_w2d_tmhs.Where(x => x.x2d_date >= lastId).OrderBy(x => x.x2d_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1704,16 +1697,17 @@ public class MigrationDatawareHouseJob : IJob
         try
         {
             string uri = $"{urlDataWareHouse}api/winmeiermigration/h_x2d_control_save";
-            var total = GetTotal($"{urlDataWareHouse}api/winmeiermigration/h_x2d_control");
-            var totalLocal = _context.h_x2d_controls.Count();
-            int totalForMigration = total == totalLocal ? 0 : totalLocal;
+            var lastCreated = GetLastCreated($"{urlDataWareHouse}api/winmeiermigration/h_x2d_control");
+            int totalForMigration = lastCreated == null ? _context.h_x2d_controls.Count() : _context.h_x2d_controls.Where(x => x.x2d_date > lastCreated).Count();
             var batchCount = (totalForMigration + batchSize - 1) / batchSize;
             _logger.LogInformation($"h_x2d_control_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.h_x2d_controls.Skip(startIndex).Take(batchSize).ToList();
+                var data = lastCreated == null ?
+                    _context.h_x2d_controls.OrderBy(x => x.x2d_date).Skip(startIndex).Take(batchSize).ToList() :
+                    _context.h_x2d_controls.Where(x => x.x2d_date >= lastCreated).OrderBy(x => x.x2d_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1739,16 +1733,15 @@ public class MigrationDatawareHouseJob : IJob
         try
         {
             string uri = $"{urlDataWareHouse}api/winmeiermigration/h_y2d_smh_save";
-            var total = GetTotal($"{urlDataWareHouse}api/winmeiermigration/h_y2d_smh");
-            var totalLocal = _context.h_y2d_smhs.Count();
-            int totalForMigration = total == totalLocal ? 0 : totalLocal;
+            var lastId = GetLastId($"{urlDataWareHouse}api/winmeiermigration/h_y2d_smh");
+            var totalForMigration = _context.h_y2d_smhs.Where(x => x.x2d_date >= lastId).Count();
             var batchCount = (totalForMigration + batchSize - 1) / batchSize;
             _logger.LogInformation($"h_y2d_smh_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.h_y2d_smhs.Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.h_y2d_smhs.Where(x => x.x2d_date >= lastId).OrderBy(x => x.x2d_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
@@ -1774,16 +1767,15 @@ public class MigrationDatawareHouseJob : IJob
         try
         {
             string uri = $"{urlDataWareHouse}api/winmeiermigration/h_y2d_tmh_save";
-            var total = GetTotal($"{urlDataWareHouse}api/winmeiermigration/h_y2d_tmh");
-            var totalLocal = _context.h_y2d_tmhs.Count();
-            int totalForMigration = total == totalLocal ? 0 : totalLocal;
+            var lastId = GetLastId($"{urlDataWareHouse}api/winmeiermigration/h_y2d_tmh");
+            var totalForMigration = _context.h_y2d_tmhs.Where(x => x.x2d_date >= lastId).Count();
             var batchCount = (totalForMigration + batchSize - 1) / batchSize;
             _logger.LogInformation($"h_y2d_tmh_migration total for migration : {totalForMigration}");
             for(int i = 0; i < batchCount; i++)
             {
                 int intentos = 100;
                 var startIndex = i * batchSize;
-                var data = _context.h_y2d_tmhs.Skip(startIndex).Take(batchSize).ToList();
+                var data = _context.h_y2d_tmhs.Where(x => x.x2d_date >= lastId).OrderBy(x => x.x2d_date).Skip(startIndex).Take(batchSize).ToList();
                 while(intentos > 0)
                 {
                     object oEnvio = data;
